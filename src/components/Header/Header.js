@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TokenService from "../../services/token-service";
 import IdleService from "../../services/idle-service";
 import "./Header.css";
@@ -8,7 +8,6 @@ import "./Header.css";
 export default class Header extends Component {
 	handleLogoutClick = () => {
 		TokenService.clearAuthToken();
-		/* when logging out, clear the callbacks to the refresh api and idle auto logout */
 		TokenService.clearCallbackBeforeExpiry();
 		IdleService.unRegisterIdleResets();
 	};
@@ -38,16 +37,17 @@ export default class Header extends Component {
 				<nav className="Header">
 					<h1>
 						<Link to="/">
-							<FontAwesomeIcon className="blue" icon="gift" /> Thingful
+							{/* <FontAwesomeIcon className="blue" icon="gift" /> */}
+							Pet Food Shopper
 						</Link>
 					</h1>
-					<span className="Header__tagline--wide">Rate all the things.</span>
+					<span className="Header__tagline--wide">Pet Food, Simplified</span>
 					{TokenService.hasAuthToken()
 						? this.renderLogoutLink()
 						: this.renderLoginLink()}
 				</nav>
 
-				<span className="Header__tagline--narrow">Rate all the things.</span>
+				<span className="Header__tagline--narrow">Pet Food, Simplified</span>
 			</>
 		);
 	}
