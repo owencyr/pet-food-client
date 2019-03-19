@@ -3,8 +3,8 @@ import { Route, Switch } from "react-router-dom";
 import Header from "../Header/Header";
 import PrivateRoute from "../Utils/PrivateRoute";
 import PublicOnlyRoute from "../Utils/PublicOnlyRoute";
-// import ThingListPage from "../../routes/ThingListPage/ThingListPage";
-// import ThingPage from "../../routes/ThingPage/ThingPage";
+// import FoodList from "../../routes/FoodList/FoodList";
+// import FoodPage from "../../routes/FoodPage/FoodPage";
 import LoginPage from "../../routes/LoginPage/LoginPage";
 import RegistrationPage from "../../routes/RegistrationPage/RegistrationPage";
 import NotFoundPage from "../../routes/NotFoundPage/NotFoundPage";
@@ -14,14 +14,14 @@ import IdleService from "../../services/idle-service";
 import "./App.css";
 import SearchPage from "../../routes/SearchPage/SearchPage";
 import SignInPage from "../../routes/SignInPage/SignInPage";
-import BestOfPage from "../../routes/BestOfPage/BestOfPage";
+// import BestOfPage from "../../routes/BestOfPage/BestOfPage";
 class App extends Component {
 	state = { hasError: false };
 
-	// static getDerivedStateFromError(error) {
-	// 	console.error(error);
-	// 	return { hasError: true };
-	// }
+	static getDerivedStateFromError(error) {
+		console.error(error);
+		return { hasError: true };
+	}
 
 	componentDidMount() {
 		IdleService.setIdleCallback(this.logoutFromIdle);
@@ -61,9 +61,9 @@ class App extends Component {
 						<Route component={NotFoundPage} />
 					</Switch>
 
-					<Switch className="right-panel">
+					{/* <Switch className="right-panel">
 						<Route exact path="/" component={BestOfPage} />
-					</Switch>
+					</Switch> */}
 				</main>
 			</div>
 		);

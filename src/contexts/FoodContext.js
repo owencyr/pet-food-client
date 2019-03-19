@@ -1,27 +1,25 @@
 import React, { Component } from "react";
 
-export const nullThing = {
+export const nullFood = {
 	author: {},
 	tags: []
 };
 
-const ThingContext = React.createContext({
-	thing: nullThing,
+const FoodContext = React.createContext({
+	food: nullFood,
 	reviews: [],
 	error: null,
 	setError: () => {},
 	clearError: () => {},
-	setThing: () => {},
-	clearThing: () => {},
-	setReviews: () => {},
-	addReview: () => {}
+	setFood: () => {},
+	clearFood: () => {}
 });
 
-export default ThingContext;
+export default FoodContext;
 
-export class ThingProvider extends Component {
+export class FoodProvider extends Component {
 	state = {
-		thing: nullThing,
+		food: nullFood,
 		error: null
 	};
 
@@ -34,16 +32,16 @@ export class ThingProvider extends Component {
 		this.setState({ error: null });
 	};
 
-	setThing = thing => {
-		this.setState({ thing });
+	setFood = food => {
+		this.setState({ food });
 	};
 
 	setReviews = reviews => {
 		this.setState({ reviews });
 	};
 
-	clearThing = () => {
-		this.setThing(nullThing);
+	clearFood = () => {
+		this.setFood(nullFood);
 		this.setReviews([]);
 	};
 
@@ -53,20 +51,20 @@ export class ThingProvider extends Component {
 
 	render() {
 		const value = {
-			thing: this.state.thing,
+			food: this.state.food,
 			reviews: this.state.reviews,
 			error: this.state.error,
 			setError: this.setError,
 			clearError: this.clearError,
-			setThing: this.setThing,
+			setFood: this.setFood,
 			setReviews: this.setReviews,
-			clearThing: this.clearThing,
+			clearFood: this.clearFood,
 			addReview: this.addReview
 		};
 		return (
-			<ThingContext.Provider value={value}>
+			<FoodContext.Provider value={value}>
 				{this.props.children}
-			</ThingContext.Provider>
+			</FoodContext.Provider>
 		);
 	}
 }

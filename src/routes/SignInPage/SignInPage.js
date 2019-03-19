@@ -5,8 +5,7 @@ export default class SignInPage extends Component {
 	render() {
 		return (
 			<section className="sign-in-page">
-				<Link to="/login">Log in</Link>
-				<Link to="/register">Register</Link>
+				<Link to="/search">Search Foods</Link>
 			</section>
 		);
 	}

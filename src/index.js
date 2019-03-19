@@ -1,18 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-// import { ThingListProvider } from './contexts/ThingListContext'
-// import { ThingProvider } from './contexts/ThingContext'
+// import { FoodListProvider } from './contexts/FoodListContext'
+// import { FoodProvider } from './contexts/FoodContext'
 import App from "./components/App/App";
 import "./index.css";
 
 ReactDOM.render(
 	<BrowserRouter>
-		{/* <ThingListProvider>
-			<ThingProvider> */}
+		{/* <FoodListProvider>
+			<FoodProvider> */}
 		<App />
-		{/* </ThingProvider>
-		</ThingListProvider> */}
+		{/* </FoodProvider>
+		</FoodListProvider> */}
 	</BrowserRouter>,
 	document.getElementById("root")
 );

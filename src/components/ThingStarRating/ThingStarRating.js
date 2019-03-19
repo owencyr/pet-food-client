@@ -1,7 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export function ThingStarRating({rating}) {
+export function FoodStarRating({rating}) {
   const stars = [
     { filled: false },
     { filled: false },
@@ -14,7 +14,7 @@ export function ThingStarRating({rating}) {
     stars[i].filled = true
   }
 
-  return <span className='ThingStarRating'>
+  return <span className='FoodStarRating'>
     { stars.map((star, index) => <Star key={index} filled={star.filled} />) }
   </span>
 }

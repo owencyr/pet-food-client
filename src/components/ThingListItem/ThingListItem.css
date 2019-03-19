@@ -1,4 +1,4 @@
-.ThingListItem {
+.FoodListItem {
   background: none;
   display: flex;
   flex-direction: column;
@@ -11,16 +11,16 @@
   border-radius: 10px;
 }
 
-.ThingListItem:hover {
+.FoodListItem:hover {
   cursor: pointer;
 }
 
-.ThingListItem,
-.ThingListItem:visited {
+.FoodListItem,
+.FoodListItem:visited {
   color: #555;
 }
 
-.ThingListItem__image {
+.FoodListItem__image {
   height: 250px;
   width: 275px;
   border-radius: 10px 10px 0 0;
@@ -28,7 +28,7 @@
   background-position: 50% 50%;
 }
 
-.ThingListItem__details {
+.FoodListItem__details {
   padding: 10px;
   display: flex;
   flex: 1;
@@ -37,17 +37,17 @@
   width: 275px;
 }
 
-.ThingListItem__details h2 {
+.FoodListItem__details h2 {
   margin: 0;
 }
 
-.ThingListItem__details .ThingStarRating {
+.FoodListItem__details .FoodStarRating {
   padding: 5px 0;
   text-align: center;
   opacity: 0.85;
 }
 
-.ThingListItem__details span {
+.FoodListItem__details span {
   display: block;
   text-align: center;
   opacity: 0.5;

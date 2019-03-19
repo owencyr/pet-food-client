@@ -1,51 +1,58 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { ThingStarRating } from '../ThingStarRating/ThingStarRating'
-import './ThingListItem.css'
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { FoodStarRating } from "../FoodStarRating/FoodStarRating";
+import "./FoodListItem.css";
 
-export default class ThingListItem extends Component {
-  render() {
-    const { thing } = this.props
+export default class FoodListItem extends Component {
+	render() {
+		const { food } = this.props;
 
-    return (
-      <Link to={`/thing/${thing.id}`} className='ThingListItem'>
-        <div className='ThingListItem__image' style={{backgroundImage: `url(${thing.image})`}} />
+		return (
+			<Link to={`/food/${food.id}`} className="FoodListItem">
+				<div
+					className="FoodListItem__image"
+					style={{ backgroundImage: `url(${food.image})` }}
+				/>
 
-        <div className='ThingListItem__details'>
-          <div className='ThingListItem__text'>
-            <h2 className='ThingListItem__heading'>{thing.title}</h2>
-            <p className='ThingListItem__description'>{truncate(thing.content)}</p>
-          </div>
+				<div className="FoodListItem__details">
+					<div className="FoodListItem__text">
+						<h2 className="FoodListItem__heading">{food.title}</h2>
+						<p className="FoodListItem__description">
+							{truncate(food.content)}
+						</p>
+					</div>
 
-          <div className='ThingListItem__reviews'>
-            <ThingStarRating rating={thing.average_review_rating} />
-            <span id='ThingListItem__review-count'>{readableReviewCount(thing.number_of_reviews)}</span>
-          </div>
-        </div>
-      </Link>
-    )
-  }
+					<div className="FoodListItem__reviews">
+						<FoodStarRating rating={food.average_review_rating} />
+						<span id="FoodListItem__review-count">
+							{readableReviewCount(food.number_of_reviews)}
+						</span>
+					</div>
+				</div>
+			</Link>
+		);
+	}
 }
 
 function readableReviewCount(number) {
-  switch(number) {
-    case 0:
-      return 'no reviews yet'
+	switch (number) {
+		case 0:
+			return "no reviews yet";
 
-    case 1:
-      return `based on 1 review`
+		case 1:
+			return `based on 1 review`;
 
-    default:
-      return `based on ${number} reviews`
-  }
+		default:
+			return `based on ${number} reviews`;
+	}
 }
 
 function truncate(text) {
-  const words = text.split(' ')
+	const words = text.split(" ");
 
-  if (words.length > 10) {
-    return words.slice(0, 10).join(' ') + ' ...'
-  }
+	if (words.length > 10) {
+		return words.slice(0, 10).join(" ") + " ...";
+	}
 
-  return text
+	return text;
 }

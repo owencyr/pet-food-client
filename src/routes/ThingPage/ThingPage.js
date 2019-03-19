@@ -1,93 +1,93 @@
-import React, { Component } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import ThingContext from '../../contexts/ThingContext'
-import ThingApiService from '../../services/thing-api-service'
-import { Hyph, Section } from '../../components/Utils/Utils'
-import { ThingStarRating } from '../../components/ThingStarRating/ThingStarRating'
-import ReviewForm from '../../components/ReviewForm/ReviewForm'
-import './ThingPage.css'
+import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import FoodContext from "../../contexts/FoodContext";
+import FoodApiService from "../../services/food-api-service";
+import { Hyph, Section } from "../../components/Utils/Utils";
+import { FoodStarRating } from "../../components/FoodStarRating/FoodStarRating";
+import ReviewForm from "../../components/ReviewForm/ReviewForm";
+import "./FoodPage.css";
 
-export default class ThingPage extends Component {
-  static defaultProps = {
-    match: { params: {} },
-  }
+export default class FoodPage extends Component {
+	static defaultProps = {
+		match: { params: {} }
+	};
 
-  static contextType = ThingContext
+	static contextType = FoodContext;
 
-  componentDidMount() {
-    const { thingId } = this.props.match.params
-    this.context.clearError()
-    ThingApiService.getThing(thingId)
-      .then(this.context.setThing)
-      .catch(this.context.setError)
-    ThingApiService.getThingReviews(thingId)
-      .then(this.context.setReviews)
-      .catch(this.context.setError)
-  }
+	componentDidMount() {
+		const { foodId } = this.props.match.params;
+		this.context.clearError();
+		FoodApiService.getFood(foodId)
+			.then(this.context.setFood)
+			.catch(this.context.setError);
+		FoodApiService.getFoodReviews(foodId)
+			.then(this.context.setReviews)
+			.catch(this.context.setError);
+	}
 
-  componentWillUnmount() {
-    this.context.clearThing()
-  }
+	componentWillUnmount() {
+		this.context.clearFood();
+	}
 
-  renderThing() {
-    const { thing, reviews } = this.context
-    return <>
-      <div className='ThingPage__image' style={{backgroundImage: `url(${thing.image})`}} />
-      <h2>{thing.title}</h2>
-      <ThingContent thing={thing} />
-      <ThingReviews reviews={reviews} />
-      <ReviewForm />
-    </>
-  }
+	renderFood() {
+		const { food, reviews } = this.context;
+		return (
+			<>
+				<div
+					className="FoodPage__image"
+					style={{ backgroundImage: `url(${food.image})` }}
+				/>
+				<h2>{food.title}</h2>
+				<FoodContent food={food} />
+				<FoodReviews reviews={reviews} />
+				<ReviewForm />
+			</>
+		);
+	}
 
-  render() {
-    const { error, thing } = this.context
-    let content
-    if (error) {
-      content = (error.error === `Thing doesn't exist`)
-        ? <p className='red'>Thing not found</p>
-        : <p className='red'>There was an error</p>
-    } else if (!thing.id) {
-      content = <div className='loading' />
-    } else {
-      content = this.renderThing()
-    }
-    return (
-      <Section className='ThingPage'>
-        {content}
-      </Section>
-    )
-  }
+	render() {
+		const { error, food } = this.context;
+		let content;
+		if (error) {
+			content =
+				error.error === `Food doesn't exist` ? (
+					<p className="red">Food not found</p>
+				) : (
+					<p className="red">There was an error</p>
+				);
+		} else if (!food.id) {
+			content = <div className="loading" />;
+		} else {
+			content = this.renderFood();
+		}
+		return <Section className="FoodPage">{content}</Section>;
+	}
 }
 
-function ThingContent({ thing }) {
-  return (
-    <p className='ThingPage__content'>
-      {thing.content}
-    </p>
-  )
+function FoodContent({ food }) {
+	return <p className="FoodPage__content">{food.content}</p>;
 }
 
-function ThingReviews({ reviews = [] }) {
-  return (
-    <ul className='ThingPage__review-list'>
-      {reviews.map(review =>
-        <li key={review.id} className='ThingPage__review'>
-          <p className='ThingPage__review-text'>
-            <FontAwesomeIcon
-              size='lg'
-              icon='quote-left'
-              className='ThingPage__review-icon blue'
-            />
-            {review.text}
-          </p>
-          <p className='ThingPage__review-user'>
-            <ThingStarRating rating={review.rating} />
-            <Hyph />
-            {review.user.full_name}
-          </p>
-        </li>
-      )}
-    </ul>
-  )
+function FoodReviews({ reviews = [] }) {
+	return (
+		<ul className="FoodPage__review-list">
+			{reviews.map(review => (
+				<li key={review.id} className="FoodPage__review">
+					<p className="FoodPage__review-text">
+						<FontAwesomeIcon
+							size="lg"
+							icon="quote-left"
+							className="FoodPage__review-icon blue"
+						/>
+						{review.text}
+					</p>
+					<p className="FoodPage__review-user">
+						<FoodStarRating rating={review.rating} />
+						<Hyph />
+						{review.user.full_name}
+					</p>
+				</li>
+			))}
+		</ul>
+	);
 }

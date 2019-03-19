@@ -10,6 +10,7 @@ export default class Header extends Component {
 		TokenService.clearAuthToken();
 		TokenService.clearCallbackBeforeExpiry();
 		IdleService.unRegisterIdleResets();
+		// this.forceUpdate();
 	};
 
 	renderLogoutLink() {
@@ -41,13 +42,17 @@ export default class Header extends Component {
 							Pet Food Shopper
 						</Link>
 					</h1>
-					<span className="Header__tagline--wide">Pet Food, Simplified</span>
+					<span className="Header__tagline--wide">
+						Pet Nutrition, Simplified
+					</span>
 					{TokenService.hasAuthToken()
 						? this.renderLogoutLink()
 						: this.renderLoginLink()}
 				</nav>
 
-				<span className="Header__tagline--narrow">Pet Food, Simplified</span>
+				<span className="Header__tagline--narrow">
+					Pet Nutrition, Simplified
+				</span>
 			</>
 		);
 	}
