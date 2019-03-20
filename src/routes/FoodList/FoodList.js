@@ -17,7 +17,7 @@ export default class FoodList extends Component {
 
 	renderFoods() {
 		const { foodList = [] } = this.context;
-		debugger;
+		// debugger;
 		return foodList.map(food => <FoodListItem key={food.id} food={food} />);
 	}
 

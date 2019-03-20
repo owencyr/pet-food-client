@@ -17,7 +17,7 @@ export default class FoodListItem extends Component {
 				<div className="FoodListItem__details">
 					<div className="FoodListItem__text">
 						<h2 className="FoodListItem__heading">
-							{food.brand} {food.variety}
+							{food.brand} {food.variety} dinner
 						</h2>
 						<ul className="FoodListItem__composites">
 							<li className="FoodListItem__kcal">{food.kcal}</li>
@@ -25,6 +25,7 @@ export default class FoodListItem extends Component {
 							<li className="FoodListItem__rating">{food.rating}</li>
 						</ul>
 						<ul className="FoodListItem__ingredients">
+							<h3>Ingredients:</h3>
 							<li className="FoodListItem__ingredient">{food.i1}</li>
 							<li className="FoodListItem__ingredient">{food.i2}</li>
 							<li className="FoodListItem__ingredient">{food.i3}</li>
