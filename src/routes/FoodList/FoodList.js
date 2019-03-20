@@ -17,13 +17,14 @@ export default class FoodList extends Component {
 
 	renderFoods() {
 		const { foodList = [] } = this.context;
+		debugger;
 		return foodList.map(food => <FoodListItem key={food.id} food={food} />);
 	}
 
 	render() {
 		const { error } = this.context;
 		return (
-			<Section list className="FoodListPage">
+			<Section list className="FoodList">
 				{error ? (
 					<p className="red">There was an error, try again</p>
 				) : (

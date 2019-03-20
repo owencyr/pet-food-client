@@ -7,9 +7,10 @@ const FoodApiService = {
 			headers: {
 				authorization: `bearer ${TokenService.getAuthToken()}`
 			}
-		}).then(res =>
-			!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
-		);
+		}).then(res => {
+			console.log("foods GET request completed");
+			!res.ok ? res.json().then(e => Promise.reject(e)) : res.json();
+		});
 	},
 	getFood(foodId) {
 		return fetch(`${config.API_ENDPOINT}/foods/${foodId}`, {
