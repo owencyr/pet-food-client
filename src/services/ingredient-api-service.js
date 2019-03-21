@@ -1,17 +1,17 @@
 import config from "../config";
 // import TokenService from "./token-service";
 
-const FoodApiService = {
-	getFoods() {
-		return fetch(`${config.API_ENDPOINT}/foods`).then(res =>
+const IngredientApiService = {
+	getIngredients() {
+		return fetch(`${config.API_ENDPOINT}/ingredients`).then(res =>
 			!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
 		);
 	}
-	// getFood(foodId) {
-	// 	return fetch(`${config.API_ENDPOINT}/foods/${foodId}`, {
-	// 		headers: {
-	// 			authorization: `bearer ${TokenService.getAuthToken()}`
-	// 		}
+	// getIngredient(ingredientId) {
+	// 	return fetch(`${config.API_ENDPOINT}/ingredients/${ingredientId}`, {
+	// 		// headers: {
+	// 		// 	authorization: `bearer ${TokenService.getAuthToken()}`
+	// 		// }
 	// 	}).then(res =>
 	// 		!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
 	// 	);
@@ -49,4 +49,4 @@ const FoodApiService = {
 	// }
 };
 
-export default FoodApiService;
+export default IngredientApiService;
