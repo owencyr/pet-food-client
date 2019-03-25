@@ -25,14 +25,12 @@ export default class FoodList extends Component {
 
 	renderFoods() {
 		const {
-			foodList = [],
-			ingredientsList = [],
-			ratingsList = []
+			foodList = null,
+			ingredientsList = null,
+			ratingsList = null
 		} = this.context;
 
-		return foodList === undefined ||
-			ingredientsList === undefined ||
-			ratingsList === undefined ? (
+		return !foodList || !ingredientsList || !ratingsList ? (
 			<section className="foodlist">
 				<span className="status-text">{"Loading from server..."}</span>
 			</section>
@@ -46,6 +44,21 @@ export default class FoodList extends Component {
 				/>
 			))
 		);
+		// return !foodList || !ingredientsList || !ratingsList ? (
+		// 	<section className="foodlist">
+		// 		<span className="status-text">{"Loading from server..."}</span>
+		// 	</section>
+		// ) : (
+		// 	<p>Nothing</p>
+		// 	/*foodList.map(food => (
+		// 			<FoodListItem
+		// 				key={food.id}
+		// 				food={food}
+		// 				ingredients={ingredientsList}
+		// 				ratings={ratingsList}
+		// 			/>
+		// 		))*/
+		// );
 	}
 
 	render() {

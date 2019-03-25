@@ -22,7 +22,7 @@ export default class FoodListItem extends Component {
 								{'sum of "rating" table grouped by food.id = ratings.food_id'}
 								{/* Composite Rating, sum of "rating" table grouped by food.id = ratings.food_id */}
 							</li>
-							<RatingForm food_id={food.id} />
+							<RatingForm food={food} />
 						</ul>
 						<ul className="FoodListItem__ingredients">
 							<h3>Ingredients:</h3>

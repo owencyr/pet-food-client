@@ -15,9 +15,9 @@ export default FoodListContext;
 
 export class FoodListProvider extends Component {
 	state = {
-		foodList: [],
-		ingredientsList: [],
-		ratingsList: [],
+		foodList: null,
+		ingredientsList: null,
+		ratingsList: null,
 		error: null
 	};
 

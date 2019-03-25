@@ -33,20 +33,6 @@ class App extends Component {
 				AuthApiService.postRefreshToken();
 			});
 		}
-
-		// return await FoodApiService.getFoods()
-		// 	.then(this.context.setFoodList)
-		// 	.catch(this.context.setError)
-		// 	.then(
-		// 		IngredientApiService.getIngredients()
-		// 			.then(this.context.setIngredientsList)
-		// 			.catch(this.context.setError)
-		// 	)
-		// 	.then(
-		// 		RatingApiService.getRatings()
-		// 			.then(this.context.setRatingsList)
-		// 			.catch(this.context.setError)
-		// 	);
 	}
 
 	componentWillUnmount() {
@@ -67,7 +53,6 @@ class App extends Component {
 				<header className="App__header">
 					<Header />
 				</header>
-
 				<main className="App__main">
 					<Switch className="left-panel">
 						<Route exact path="/" component={SignInPage} />

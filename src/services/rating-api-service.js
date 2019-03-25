@@ -36,9 +36,9 @@ const RatingApiService = {
 				"content-type": "application/json"
 			},
 			body: JSON.stringify({
-				food_id: foodId,
+				foodid: foodId,
 				rating: rating,
-				user_id: userId
+				userid: userId
 			})
 		}).then(res =>
 			!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
