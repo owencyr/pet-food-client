@@ -1,41 +1,12 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // import { FoodStarRating } from "../FoodStarRating/FoodStarRating";
+import RatingForm from "../RatingForm/RatingForm";
 import "./FoodListItem.css";
 
 export default class FoodListItem extends Component {
-	// joinOneFoodWithIngredients(db, id) {
-	// 	return db("foods")
-	// 		.select(
-	// 			"foods.id AS ingredient_id",
-	// 			"foods.variety",
-	// 			"foods.kcal",
-	// 			"foods.grade",
-	// 			"foods.brand",
-	// 			"foods.i1",
-	// 			"ing_1.name as ing_1_name",
-	// 			" foods.i2",
-	// 			"ing_2.name as ing_2_name",
-	// 			"foods.i3",
-	// 			"ing_3.name as ing_3_name",
-	// 			"foods.i4",
-	// 			"ing_4.name as ing_4_name",
-	// 			"foods.i5",
-	// 			"ing_5.name as ing_5_name",
-	// 			"foods.rating"
-	// 			// db.raw('count(DISTINCT rev) AS number_of_reviews'),
-	// 			// db.raw('AVG(rev.rating) AS average_review_rating')
-	// 		)
-	// 		.leftJoin("ingredients as ing_1", "ingredients.i1", "ing_1.id")
-	// 		.leftJoin("ingredients as ing_2", "ingredients.i2", "ing_2.id")
-	// 		.leftJoin("ingredients as ing_3", "ingredients.i3", "ing_3.id")
-	// 		.leftJoin("ingredients as ing_4", "ingredients.i4", "ing_4.id")
-	// 		.leftJoin("ingredients as ing_5", "ingredients.i5", "ing_5.id")
-	// 		.where("food.id", id);
-	// }
-
 	render() {
-		const { food, ingredients } = this.props;
+		const { food, ingredients, ratings } = this.props;
 		// debugger;
 		return (
 			<section className="FoodListItem">
@@ -47,13 +18,11 @@ export default class FoodListItem extends Component {
 						<ul className="FoodListItem__composites">
 							<li className="FoodListItem__kcal">{food.kcal}</li>
 							<li className="FoodListItem__grade">{food.grade}</li>
-							<li className="FoodListItem__rating">{food.rating}</li>
-							<form className="FoodListItem__Rating">
-								<label htmlFor="Rating__up">Thumbs up</label>
-								<button className="Rating__up">^</button>
-								<label htmlFor="Rating__down">Thumbs down</label>
-								<button className="Rating__down">v</button>
-							</form>
+							<li className="FoodListItem__rating">
+								{'sum of "rating" table grouped by food.id = ratings.food_id'}
+								{/* Composite Rating, sum of "rating" table grouped by food.id = ratings.food_id */}
+							</li>
+							<RatingForm food_id={food.id} />
 						</ul>
 						<ul className="FoodListItem__ingredients">
 							<h3>Ingredients:</h3>

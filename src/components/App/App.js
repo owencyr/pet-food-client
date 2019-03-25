@@ -11,13 +11,15 @@ import NotFoundPage from "../../routes/NotFoundPage/NotFoundPage";
 import TokenService from "../../services/token-service";
 import AuthApiService from "../../services/auth-api-service";
 import IdleService from "../../services/idle-service";
+
 import "./App.css";
 import SearchPage from "../../routes/SearchPage/SearchPage";
 import SignInPage from "../../routes/SignInPage/SignInPage";
+import FoodListContext from "../../contexts/FoodListContext";
 // import BestOfPage from "../../routes/BestOfPage/BestOfPage";
 class App extends Component {
 	state = { hasError: false };
-
+	static contextType = FoodListContext;
 	static getDerivedStateFromError(error) {
 		console.error(error);
 		return { hasError: true };
@@ -31,6 +33,20 @@ class App extends Component {
 				AuthApiService.postRefreshToken();
 			});
 		}
+
+		// return await FoodApiService.getFoods()
+		// 	.then(this.context.setFoodList)
+		// 	.catch(this.context.setError)
+		// 	.then(
+		// 		IngredientApiService.getIngredients()
+		// 			.then(this.context.setIngredientsList)
+		// 			.catch(this.context.setError)
+		// 	)
+		// 	.then(
+		// 		RatingApiService.getRatings()
+		// 			.then(this.context.setRatingsList)
+		// 			.catch(this.context.setError)
+		// 	);
 	}
 
 	componentWillUnmount() {
