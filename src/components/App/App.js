@@ -27,7 +27,9 @@ class App extends Component {
 
 	componentDidMount() {
 		IdleService.setIdleCallback(this.logoutFromIdle);
+
 		if (TokenService.hasAuthToken()) {
+			this.context.updateLoggedIn();
 			IdleService.registerIdleTimerResets();
 			TokenService.queueCallbackBeforeExpiry(() => {
 				AuthApiService.postRefreshToken();
@@ -42,7 +44,7 @@ class App extends Component {
 
 	logoutFromIdle = () => {
 		TokenService.clearAuthToken();
-		TokenService.clearUserNick();
+		TokenService.clearUserMetadata();
 		TokenService.clearCallbackBeforeExpiry();
 		IdleService.unRegisterIdleResets();
 		this.forceUpdate();

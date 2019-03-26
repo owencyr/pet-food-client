@@ -5,12 +5,14 @@ const FoodListContext = React.createContext({
 	ingredientsList: [],
 	ratingsList: [],
 	query: null,
+	isLoggedIn: false,
 	error: null,
 	setError: () => {},
 	clearError: () => {},
 	setFoodList: () => {},
 	setIngredientsList: () => {},
-	setRatingsList: () => {}
+	setRatingsList: () => {},
+	updateLoggedIn: () => {}
 });
 export default FoodListContext;
 
@@ -20,6 +22,7 @@ export class FoodListProvider extends Component {
 		ingredientsList: null,
 		ratingsList: null,
 		query: null,
+		isLoggedIn: false,
 		error: null
 	};
 
@@ -39,6 +42,10 @@ export class FoodListProvider extends Component {
 		this.setState({ query });
 	};
 
+	updateLoggedIn = () => {
+		this.setState({ loggedIn: window.localStorage.getItem("userid") !== null });
+	};
+
 	setError = error => {
 		console.error(error);
 		this.setState({ error });
@@ -54,13 +61,15 @@ export class FoodListProvider extends Component {
 			ingredientsList: this.state.ingredientsList,
 			ratingsList: this.state.ratingsList,
 			query: this.state.query,
+			isLoggedIn: this.state.isLoggedIn,
 			error: this.state.error,
 			setError: this.setError,
 			clearError: this.clearError,
 			setFoodList: this.setFoodList,
 			setIngredientsList: this.setIngredientsList,
 			setRatingsList: this.setRatingsList,
-			setQuery: this.setQuery
+			setQuery: this.setQuery,
+			updateLoggedIn: this.updateLoggedIn
 		};
 		return (
 			<FoodListContext.Provider value={value}>

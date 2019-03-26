@@ -9,7 +9,8 @@ const TokenService = {
 		window.localStorage.setItem(config.TOKEN_KEY, token);
 		// localStorage.get() and set()
 	},
-	saveUserNick(nickname) {
+	saveUserMetadata(id, nickname) {
+		window.localStorage.setItem("userid", id);
 		window.localStorage.setItem("nickname", nickname);
 	},
 
@@ -20,7 +21,8 @@ const TokenService = {
 		// console.info("clearing the auth token");
 		window.localStorage.removeItem(config.TOKEN_KEY);
 	},
-	clearUserNick() {
+	clearUserMetadata() {
+		window.localStorage.removeItem("userid");
 		window.localStorage.removeItem("nickname");
 	},
 	hasAuthToken() {
