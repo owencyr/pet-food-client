@@ -12,7 +12,7 @@ export default class RatingForm extends Component {
 
 		const thumb_rating = e.target[0].checked ? 1 : -1;
 		const { food } = this.props;
-		debugger;
+		// debugger;
 		// need to know what user this is? how to identify
 		// have user input name in order to rate (worst)
 		// decode token to figure out which user is accessing
@@ -28,7 +28,9 @@ export default class RatingForm extends Component {
 		RatingApiService.postRating(food.id, user_idHardCode, thumb_rating)
 			.then(
 				RatingApiService.getRatings()
-					.then(this.context.setRatingsList)
+					.then(ratings => {
+						this.context.setRatingsList(ratings);
+					})
 					.catch(this.context.setError)
 			)
 			.catch(this.context.setError);

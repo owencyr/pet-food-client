@@ -8,14 +8,16 @@ import "./Header.css";
 export default class Header extends Component {
 	handleLogoutClick = () => {
 		TokenService.clearAuthToken();
+		TokenService.clearUserNick();
 		TokenService.clearCallbackBeforeExpiry();
 		IdleService.unRegisterIdleResets();
-		// this.forceUpdate();
 	};
 
 	renderLogoutLink() {
+		const nickname = window.localStorage.getItem("nickname");
 		return (
 			<div className="Header__logged-in">
+				<span className="User__greeting">{`Hello, ${nickname}`}</span>
 				<Link onClick={this.handleLogoutClick} to="/">
 					Logout
 				</Link>

@@ -33,12 +33,6 @@ export class FoodListProvider extends Component {
 		this.setState({ ratingsList });
 	};
 
-	//seems silly to update local state, when there could have potentially been other ratings changes since last updated from database
-	// would be ideal to trigger a get ratings after user sends an update, so all database updates are reflected clientside
-	// addRating = newRating => {
-	// 	this.setState({...ratingsList})
-	// }
-
 	setError = error => {
 		console.error(error);
 		this.setState({ error });

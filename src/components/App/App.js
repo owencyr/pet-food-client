@@ -42,6 +42,7 @@ class App extends Component {
 
 	logoutFromIdle = () => {
 		TokenService.clearAuthToken();
+		TokenService.clearUserNick();
 		TokenService.clearCallbackBeforeExpiry();
 		IdleService.unRegisterIdleResets();
 		this.forceUpdate();
@@ -50,9 +51,7 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<header className="App__header">
-					<Header />
-				</header>
+				<Header className="App__header" />
 				<main className="App__main">
 					<Switch className="left-panel">
 						<Route exact path="/" component={SignInPage} />

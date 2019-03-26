@@ -7,6 +7,10 @@ import "./FoodListItem.css";
 export default class FoodListItem extends Component {
 	render() {
 		const { food, ingredients, ratings } = this.props;
+		// ratings is returned to us as array of objects, and this line matches against one of those array items.
+		// food rating is an array with a single object in it, and we need to destructure the array portion
+		// this problem was originally dealt with by the return of the insertRating, but this data would never be used later because database data is fetched on every refresh of the page
+		const [foodRating] = ratings.filter(rating => rating.food_id === food.id);
 		// debugger;
 		return (
 			<section className="FoodListItem">
@@ -19,7 +23,7 @@ export default class FoodListItem extends Component {
 							<li className="FoodListItem__kcal">{food.kcal}</li>
 							<li className="FoodListItem__grade">{food.grade}</li>
 							<li className="FoodListItem__rating">
-								{'sum of "rating" table grouped by food.id = ratings.food_id'}
+								{foodRating.rating}
 								{/* Composite Rating, sum of "rating" table grouped by food.id = ratings.food_id */}
 							</li>
 							<RatingForm food={food} />
