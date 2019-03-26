@@ -27,14 +27,15 @@ export default class FoodList extends Component {
 		const {
 			foodList = null,
 			ingredientsList = null,
-			ratingsList = null
+			ratingsList = null,
+			query = null
 		} = this.context;
 
 		return !foodList || !ingredientsList || !ratingsList ? (
 			<section className="foodlist">
 				<span className="status-text">{"Loading from server..."}</span>
 			</section>
-		) : (
+		) : !query ? (
 			foodList.map(food => (
 				<FoodListItem
 					key={food.id}
@@ -43,6 +44,17 @@ export default class FoodList extends Component {
 					ratings={ratingsList}
 				/>
 			))
+		) : (
+			foodList
+				.filter(food => food.variety.includes(query))
+				.map(food => (
+					<FoodListItem
+						key={food.id}
+						food={food}
+						ingredients={ingredientsList}
+						ratings={ratingsList}
+					/>
+				))
 		);
 		// return !foodList || !ingredientsList || !ratingsList ? (
 		// 	<section className="foodlist">

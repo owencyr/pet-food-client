@@ -4,6 +4,7 @@ const FoodListContext = React.createContext({
 	foodList: [],
 	ingredientsList: [],
 	ratingsList: [],
+	query: null,
 	error: null,
 	setError: () => {},
 	clearError: () => {},
@@ -18,6 +19,7 @@ export class FoodListProvider extends Component {
 		foodList: null,
 		ingredientsList: null,
 		ratingsList: null,
+		query: null,
 		error: null
 	};
 
@@ -31,6 +33,10 @@ export class FoodListProvider extends Component {
 
 	setRatingsList = ratingsList => {
 		this.setState({ ratingsList });
+	};
+
+	setQuery = query => {
+		this.setState({ query });
 	};
 
 	setError = error => {
@@ -47,12 +53,14 @@ export class FoodListProvider extends Component {
 			foodList: this.state.foodList,
 			ingredientsList: this.state.ingredientsList,
 			ratingsList: this.state.ratingsList,
+			query: this.state.query,
 			error: this.state.error,
 			setError: this.setError,
 			clearError: this.clearError,
 			setFoodList: this.setFoodList,
 			setIngredientsList: this.setIngredientsList,
-			setRatingsList: this.setRatingsList
+			setRatingsList: this.setRatingsList,
+			setQuery: this.setQuery
 		};
 		return (
 			<FoodListContext.Provider value={value}>
