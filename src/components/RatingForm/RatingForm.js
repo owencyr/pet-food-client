@@ -20,25 +20,26 @@ export default class RatingForm extends Component {
 
 	renderRatingDisabled() {
 		return (
-			<form className="FoodListItem__Rating" onSubmit={this.handleSubmit}>
-				<input
-					type="radio"
-					name="rating_thumb"
+			<form
+				className="RatingForm FoodListItem__Rating "
+				onSubmit={this.handleSubmit}>
+				<label htmlFor="rating_thumb_up">Thumbs Up</label>
+				<Button
+					type="submit"
+					name="rating_thumb_up"
 					value="1"
 					className="form-rating-input"
-					disabled
-				/>{" "}
-				Thumbs Up
-				<input
-					type="radio"
-					name="rating_thumb"
+					disabled>
+					Thumbs Up
+				</Button>
+				<label htmlFor="rating_thumb_down">Thumbs Down</label>
+				<Button
+					type="submit"
+					name="rating_thumb_down"
 					value="-1"
 					className="form-rating-input"
-					disabled
-				/>{" "}
-				Thumbs Down
-				<Button type="submit" disabled>
-					Post rating
+					disabled>
+					Thumbs Down
 				</Button>
 			</form>
 		);
@@ -47,21 +48,22 @@ export default class RatingForm extends Component {
 	renderRatingEnabled() {
 		return (
 			<form className="FoodListItem__Rating" onSubmit={this.handleSubmit}>
-				<input
-					type="radio"
-					name="rating_thumb"
+				<label htmlFor="rating_thumb_up">Thumbs Up</label>
+				<Button
+					type="submit"
+					name="rating_thumb_up"
 					value="1"
-					className="form-rating-input"
-				/>{" "}
-				Thumbs Up
-				<input
-					type="radio"
-					name="rating_thumb"
+					className="form-rating-input">
+					Thumbs Up
+				</Button>
+				<label htmlFor="rating_thumb_down">Thumbs Down</label>
+				<Button
+					type="submit"
+					name="rating_thumb_down"
 					value="-1"
-					className="form-rating-input"
-				/>{" "}
-				Thumbs Down
-				<Button type="submit">Post rating</Button>
+					className="form-rating-input">
+					Thumbs Down
+				</Button>
 			</form>
 		);
 	}

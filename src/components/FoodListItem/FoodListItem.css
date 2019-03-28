@@ -41,9 +41,9 @@
 	margin: 0;
 }
 
-.FoodListItem__details .FoodStarRating {
+.FoodListItem__details {
 	padding: 5px 0;
-	text-align: center;
+	/* text-align: center; */
 	opacity: 0.85;
 }
 
@@ -51,4 +51,14 @@
 	display: block;
 	text-align: center;
 	opacity: 0.5;
+}
+
+ul.FoodListItem__composites {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.FoodListItem__composites li {
+	padding: 10px;
 }

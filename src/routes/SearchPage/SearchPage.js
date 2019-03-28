@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import FoodList from "../FoodList/FoodList";
 import FoodListContext from "../../contexts/FoodListContext";
-// import FoodApiService from "../../services/food-api-service";
-// import SearchForm from "../../components/SearchForm";
+import "./SearchPage.css";
 
 export default class SearchPage extends Component {
 	static contextType = FoodListContext;
@@ -15,8 +14,8 @@ export default class SearchPage extends Component {
 
 	render() {
 		return (
-			<section className="search">
-				<form className="search-form" onSubmit={this.handleSubmit}>
+			<section className="SearchPage">
+				<form className="SearchForm" onSubmit={this.handleSubmit}>
 					<label htmlFor="search">Search</label>
 					<input
 						type="text"

@@ -11,7 +11,7 @@ export default class FoodListItem extends Component {
 		// food rating is an array with a single object in it, and we need to destructure the array portion
 		// this problem was originally dealt with by the return of the insertRating, but this data would never be used later because database data is fetched on every refresh of the page
 		const [foodRating] = ratings.filter(rating => rating.foodid === food.id);
-		// debugger;
+		debugger;
 		return (
 			<section className="FoodListItem">
 				<div className="FoodListItem__details">
@@ -20,13 +20,17 @@ export default class FoodListItem extends Component {
 							{food.brand} {food.variety} dinner
 						</h2>
 						<ul className="FoodListItem__composites">
-							<li className="FoodListItem__kcal">{food.kcal}</li>
-							<li className="FoodListItem__grade">{food.grade}</li>
+							<li className="FoodListItem__kcal">{food.kcal} kcal/can</li>
+							<li className="FoodListItem__grade">
+								Pet Food Shopper Grade: {food.grade}
+							</li>
 							<li className="FoodListItem__rating">
-								{foodRating.rating}
+								Rating {foodRating.rating}
 								{/* Composite Rating, sum of "rating" table grouped by food.id = ratings.food_id */}
 							</li>
-							<RatingForm food={food} />
+							<section className="rating-input">
+								<RatingForm food={food} />
+							</section>
 						</ul>
 						<ul className="FoodListItem__ingredients">
 							<h3>Ingredients:</h3>
@@ -46,18 +50,7 @@ export default class FoodListItem extends Component {
 								{ingredients[food.i5 - 1].name}
 							</li>
 						</ul>
-
-						{/* <p className="FoodListItem__description">
-							{truncate(food.content)}
-						</p> */}
 					</div>
-
-					{/* <div className="FoodListItem__reviews">
-						<FoodStarRating rating={food.average_review_rating} />
-						<span id="FoodListItem__review-count">
-							{readableReviewCount(food.number_of_reviews)}
-						</span>
-					</div> */}
 				</div>
 			</section>
 		);

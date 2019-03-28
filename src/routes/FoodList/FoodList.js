@@ -60,21 +60,6 @@ export default class FoodList extends Component {
 					/>
 				))
 		);
-		// return !foodList || !ingredientsList || !ratingsList ? (
-		// 	<section className="foodlist">
-		// 		<span className="status-text">{"Loading from server..."}</span>
-		// 	</section>
-		// ) : (
-		// 	<p>Nothing</p>
-		// 	/*foodList.map(food => (
-		// 			<FoodListItem
-		// 				key={food.id}
-		// 				food={food}
-		// 				ingredients={ingredientsList}
-		// 				ratings={ratingsList}
-		// 			/>
-		// 		))*/
-		// );
 	}
 
 	render() {

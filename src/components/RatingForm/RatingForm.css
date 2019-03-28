@@ -4,7 +4,5 @@
 }
 
 .RatingForm label {
-	display: inline-block;
-	margin: 10px 10px 20px;
-	margin-left: 0;
+	display: none;
 }
