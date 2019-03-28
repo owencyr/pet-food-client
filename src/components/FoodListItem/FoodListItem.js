@@ -11,7 +11,6 @@ export default class FoodListItem extends Component {
 		// food rating is an array with a single object in it, and we need to destructure the array portion
 		// this problem was originally dealt with by the return of the insertRating, but this data would never be used later because database data is fetched on every refresh of the page
 		const [foodRating] = ratings.filter(rating => rating.foodid === food.id);
-		debugger;
 		return (
 			<section className="FoodListItem">
 				<div className="FoodListItem__details">
