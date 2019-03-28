@@ -11,12 +11,8 @@ export default class RatingForm extends Component {
 	checkRated = () => {
 		const { food } = this.props;
 		const { userRatedFoods } = this.context;
-		debugger;
-		return (
-			userRatedFoods.filter(item => {
-				return (item.foodid = food.id);
-			}).length > 0
-		);
+		const foodids = userRatedFoods.map(food => food.foodid);
+		return foodids.includes(food.id);
 		// look inside this.context.userRatedFoods for foodid = this.props.food.id
 		// if foodid already in userRatedFoods, renderRatingDisplay
 		// if foodid not rated in userRatedFoods, renderRatingInterface
