@@ -1,0 +1,15 @@
+{
+	"version": 2,
+	"name": "pet-food-shopper",
+	"alias": "pet-food-shopper",
+	"routes": [
+		{
+			"src": "^/static/(.*)",
+			"dest": "/static/$1"
+		},
+		{
+			"src": ".*",
+			"dest": "/index.html"
+		}
+	]
+}
