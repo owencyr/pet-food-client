@@ -7,6 +7,69 @@ import "./RatingForm.css";
 
 export default class RatingForm extends Component {
 	static contextType = FoodListContext;
+
+	checkRated = () => {
+		const { food } = this.props;
+		const { userRatedFoods } = this.context;
+		debugger;
+		return (
+			userRatedFoods.filter(item => {
+				return (item.foodid = food.id);
+			}).length > 0
+		);
+		// look inside this.context.userRatedFoods for foodid = this.props.food.id
+		// if foodid already in userRatedFoods, renderRatingDisplay
+		// if foodid not rated in userRatedFoods, renderRatingInterface
+	};
+
+	renderRatingDisabled() {
+		return (
+			<form className="FoodListItem__Rating" onSubmit={this.handleSubmit}>
+				<input
+					type="radio"
+					name="rating_thumb"
+					value="1"
+					className="form-rating-input"
+					disabled
+				/>{" "}
+				Thumbs Up
+				<input
+					type="radio"
+					name="rating_thumb"
+					value="-1"
+					className="form-rating-input"
+					disabled
+				/>{" "}
+				Thumbs Down
+				<Button type="submit" disabled>
+					Post rating
+				</Button>
+			</form>
+		);
+	}
+
+	renderRatingEnabled() {
+		return (
+			<form className="FoodListItem__Rating" onSubmit={this.handleSubmit}>
+				<input
+					type="radio"
+					name="rating_thumb"
+					value="1"
+					className="form-rating-input"
+				/>{" "}
+				Thumbs Up
+				<input
+					type="radio"
+					name="rating_thumb"
+					value="-1"
+					className="form-rating-input"
+				/>{" "}
+				Thumbs Down
+				<Button type="submit">Post rating</Button>
+			</form>
+		);
+	}
+
 	handleSubmit = e => {
 		e.preventDefault();
 
@@ -30,28 +93,18 @@ export default class RatingForm extends Component {
 			.then(ratings => {
 				this.context.setRatingsList(ratings);
 			})
+			.then(() =>
+				RatingApiService.getUserRatedFoods(
+					window.localStorage.getItem("userid")
+				)
+			)
+			.then(this.context.setUserRatedFoods)
 			.catch(this.context.setError);
 	};
 
 	render() {
-		return (
-			<form className="FoodListItem__Rating" onSubmit={this.handleSubmit}>
-				<input
-					type="radio"
-					name="rating_thumb"
-					value="1"
-					className="form-rating-input"
-				/>{" "}
-				Thumbs Up
-				<input
-					type="radio"
-					name="rating_thumb"
-					value="-1"
-					className="form-rating-input"
-				/>{" "}
-				Thumbs Down
-				<Button type="submit">Post rating</Button>
-			</form>
-		);
+		return this.checkRated()
+			? this.renderRatingDisabled()
+			: this.renderRatingEnabled();
 	}
 }

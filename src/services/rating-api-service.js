@@ -7,6 +7,18 @@ const RatingApiService = {
 			!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
 		);
 	},
+	getUserRatedFoods(userid) {
+		return fetch(`${config.API_ENDPOINT}/ratings/users?userid=${userid}`, {
+			method: "GET",
+			headers: {
+				authorization: `bearer ${TokenService.getAuthToken()}`,
+				"content-type": "application/json"
+			}
+		}).then(res =>
+			!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+		);
+	},
+
 	// getIngredient(ratingId) {
 	// 	return fetch(`${config.API_ENDPOINT}/ratings/${ratingId}`, {
 	// 		// headers: {
@@ -29,7 +41,7 @@ const RatingApiService = {
 	//     )
 	// },
 	postRating(foodId, userId, rating) {
-		return fetch(`${config.API_ENDPOINT}/ratings/${foodId}`, {
+		return fetch(`${config.API_ENDPOINT}/ratings/foods/${foodId}`, {
 			method: "POST",
 			headers: {
 				authorization: `bearer ${TokenService.getAuthToken()}`,

@@ -4,14 +4,16 @@ const FoodListContext = React.createContext({
 	foodList: [],
 	ingredientsList: [],
 	ratingsList: [],
+	userRatedFoods: [],
 	query: null,
-	isLoggedIn: false,
+	loggedIn: false,
 	error: null,
 	setError: () => {},
 	clearError: () => {},
 	setFoodList: () => {},
 	setIngredientsList: () => {},
 	setRatingsList: () => {},
+	setUserRatedFoods: () => {},
 	updateLoggedIn: () => {}
 });
 export default FoodListContext;
@@ -21,8 +23,9 @@ export class FoodListProvider extends Component {
 		foodList: null,
 		ingredientsList: null,
 		ratingsList: null,
+		userRatedFoods: null,
 		query: null,
-		isLoggedIn: false,
+		loggedIn: false,
 		error: null
 	};
 
@@ -36,6 +39,10 @@ export class FoodListProvider extends Component {
 
 	setRatingsList = ratingsList => {
 		this.setState({ ratingsList });
+	};
+
+	setUserRatedFoods = userRatedFoods => {
+		this.setState({ userRatedFoods });
 	};
 
 	setQuery = query => {
@@ -60,14 +67,16 @@ export class FoodListProvider extends Component {
 			foodList: this.state.foodList,
 			ingredientsList: this.state.ingredientsList,
 			ratingsList: this.state.ratingsList,
+			userRatedFoods: this.state.userRatedFoods,
 			query: this.state.query,
-			isLoggedIn: this.state.isLoggedIn,
+			loggedIn: this.state.loggedIn,
 			error: this.state.error,
 			setError: this.setError,
 			clearError: this.clearError,
 			setFoodList: this.setFoodList,
 			setIngredientsList: this.setIngredientsList,
 			setRatingsList: this.setRatingsList,
+			setUserRatedFoods: this.setUserRatedFoods,
 			setQuery: this.setQuery,
 			updateLoggedIn: this.updateLoggedIn
 		};

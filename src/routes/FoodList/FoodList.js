@@ -21,6 +21,9 @@ export default class FoodList extends Component {
 		RatingApiService.getRatings()
 			.then(this.context.setRatingsList)
 			.catch(this.context.setError);
+		RatingApiService.getUserRatedFoods(window.localStorage.getItem("userid"))
+			.then(this.context.setUserRatedFoods)
+			.catch(this.context.setError);
 	}
 
 	renderFoods() {
@@ -28,10 +31,11 @@ export default class FoodList extends Component {
 			foodList = null,
 			ingredientsList = null,
 			ratingsList = null,
+			userRatedFoods = null,
 			query = null
 		} = this.context;
 
-		return !foodList || !ingredientsList || !ratingsList ? (
+		return !foodList || !ingredientsList || !ratingsList || !userRatedFoods ? (
 			<section className="foodlist">
 				<span className="status-text">{"Loading from server..."}</span>
 			</section>
