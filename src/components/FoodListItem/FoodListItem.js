@@ -1,22 +1,17 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
-// import { FoodStarRating } from "../FoodStarRating/FoodStarRating";
 import RatingForm from "../RatingForm/RatingForm";
 import "./FoodListItem.css";
 
 export default class FoodListItem extends Component {
 	render() {
 		const { food, ingredients, ratings } = this.props;
-		// ratings is returned to us as array of objects, and this line matches against one of those array items.
-		// food rating is an array with a single object in it, and we need to destructure the array portion
-		// this problem was originally dealt with by the return of the insertRating, but this data would never be used later because database data is fetched on every refresh of the page
 		const [foodRating] = ratings.filter(rating => rating.foodid === food.id);
 		return (
 			<section className="FoodListItem">
 				<div className="FoodListItem__details">
 					<div className="FoodListItem__text">
 						<h2 className="FoodListItem__heading">
-							{food.brand} {food.variety} dinner
+							{food.brand} {food.variety}
 						</h2>
 						<ul className="FoodListItem__composites">
 							<li className="FoodListItem__kcal">{food.kcal} kcal/can</li>
@@ -25,7 +20,6 @@ export default class FoodListItem extends Component {
 							</li>
 							<li className="FoodListItem__rating">
 								Rating {foodRating.rating}
-								{/* Composite Rating, sum of "rating" table grouped by food.id = ratings.food_id */}
 							</li>
 							<section className="rating-input">
 								<RatingForm food={food} />
@@ -55,26 +49,3 @@ export default class FoodListItem extends Component {
 		);
 	}
 }
-
-// function readableReviewCount(number) {
-// 	switch (number) {
-// 		case 0:
-// 			return "no reviews yet";
-
-// 		case 1:
-// 			return `based on 1 review`;
-
-// 		default:
-// 			return `based on ${number} reviews`;
-// 	}
-// }
-
-// function truncate(text) {
-// 	const words = text.split(" ");
-
-// 	if (words.length > 10) {
-// 		return words.slice(0, 10).join(" ") + " ...";
-// 	}
-
-// 	return text;
-// }

@@ -11,10 +11,6 @@
 	border-radius: 10px;
 }
 
-/* .FoodListItem:hover {
-  cursor: pointer;
-} */
-
 .FoodListItem,
 .FoodListItem:visited {
 	color: #555;
@@ -34,17 +30,12 @@
 	flex: 1;
 	flex-direction: column;
 	justify-content: space-between;
+	opacity: 0.85;
 	width: 275px;
 }
 
 .FoodListItem__details h2 {
 	margin: 0;
-}
-
-.FoodListItem__details {
-	padding: 5px 0;
-	/* text-align: center; */
-	opacity: 0.85;
 }
 
 .FoodListItem__details span {

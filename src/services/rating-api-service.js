@@ -19,27 +19,6 @@ const RatingApiService = {
 		);
 	},
 
-	// getIngredient(ratingId) {
-	// 	return fetch(`${config.API_ENDPOINT}/ratings/${ratingId}`, {
-	// 		// headers: {
-	// 		// 	authorization: `bearer ${TokenService.getAuthToken()}`
-	// 		// }
-	// 	}).then(res =>
-	// 		!res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
-	// 	);
-	// }
-	// getFoodReviews(FoodId) {
-	//   return fetch(`${config.API_ENDPOINT}/Foods/${FoodId}/reviews`, {
-	//     headers: {
-	//       'authorization' : `bearer ${TokenService.getAuthToken()}`,
-	//     },
-	//   })
-	//     .then(res =>
-	//       (!res.ok)
-	//         ? res.json().then(e => Promise.reject(e))
-	//         : res.json()
-	//     )
-	// },
 	postRating(foodId, userId, rating) {
 		return fetch(`${config.API_ENDPOINT}/ratings/foods/${foodId}`, {
 			method: "POST",

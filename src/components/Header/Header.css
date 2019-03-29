@@ -48,6 +48,15 @@
 	border-radius: 15px;
 }
 
+@media screen and (max-width: 375px) {
+	.Header__tagline--wide {
+		display: none;
+	}
+	.Header__tagline--narrow {
+		display: none;
+	}
+}
+
 @media screen and (min-width: 450px) {
 	.Header {
 		align-items: baseline;
@@ -58,7 +67,7 @@
 	}
 }
 
-@media screen and (max-width: 490px) {
+@media screen and (max-width: 490px) and (min-width: 376px) {
 	.Header__tagline--wide {
 		display: none;
 	}

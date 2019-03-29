@@ -23,6 +23,7 @@ export class FoodListProvider extends Component {
 		foodList: null,
 		ingredientsList: null,
 		ratingsList: null,
+		brandsList: null,
 		userRatedFoods: null,
 		query: null,
 		loggedIn: false,

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import './SignInPage.css'
 
 export default class SignInPage extends Component {
 	render() {

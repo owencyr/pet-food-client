@@ -51,7 +51,7 @@ export default class Header extends Component {
 					<h1>
 						<Link to="/">
 							{/* <FontAwesomeIcon className="blue" icon="gift" /> */}
-							Pet Food Shopper
+							Pet Food
 						</Link>
 					</h1>
 					<span className="Header__tagline--wide">

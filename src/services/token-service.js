@@ -7,7 +7,6 @@ const _TEN_SECONDS_IN_MS = 10000;
 const TokenService = {
 	saveAuthToken(token) {
 		window.localStorage.setItem(config.TOKEN_KEY, token);
-		// localStorage.get() and set()
 	},
 	saveUserMetadata(id, nickname) {
 		window.localStorage.setItem("userid", id);
@@ -18,7 +17,6 @@ const TokenService = {
 		return window.localStorage.getItem(config.TOKEN_KEY);
 	},
 	clearAuthToken() {
-		// console.info("clearing the auth token");
 		window.localStorage.removeItem(config.TOKEN_KEY);
 	},
 	clearUserMetadata() {
