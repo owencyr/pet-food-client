@@ -3,8 +3,6 @@ import { Route, Switch } from "react-router-dom";
 import Header from "../Header/Header";
 import PrivateRoute from "../Utils/PrivateRoute";
 import PublicOnlyRoute from "../Utils/PublicOnlyRoute";
-// import FoodList from "../../routes/FoodList/FoodList";
-// import FoodPage from "../../routes/FoodPage/FoodPage";
 import LoginPage from "../../routes/LoginPage/LoginPage";
 import RegistrationPage from "../../routes/RegistrationPage/RegistrationPage";
 import NotFoundPage from "../../routes/NotFoundPage/NotFoundPage";
@@ -16,7 +14,6 @@ import "./App.css";
 import SearchPage from "../../routes/SearchPage/SearchPage";
 import SignInPage from "../../routes/SignInPage/SignInPage";
 import FoodListContext from "../../contexts/FoodListContext";
-// import BestOfPage from "../../routes/BestOfPage/BestOfPage";
 class App extends Component {
 	state = { hasError: false };
 	static contextType = FoodListContext;
@@ -62,10 +59,6 @@ class App extends Component {
 						<PrivateRoute path="/search" component={SearchPage} />
 						<Route component={NotFoundPage} />
 					</Switch>
-
-					{/* <Switch className="right-panel">
-						<Route exact path="/" component={BestOfPage} />
-					</Switch> */}
 				</main>
 			</div>
 		);
