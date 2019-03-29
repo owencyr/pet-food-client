@@ -17,7 +17,8 @@ for a spreadsheet to effectively price shop pet diets. In addition,
 you won't need a pet nutritionist to know what that pet food label
 is really telling you.
 
-####Functions/Demo
+### Functions/Demo
+
 Try username 'guy123', password 'PasswordA1!' with no quotes.
 This account has already rated all foods. Make a new account to try rating foods.
 
@@ -29,7 +30,8 @@ You can rate foods only one time, with this status preserved on a per user basis
 
 You can filter the list of foods by name in the search bar.
 
-####Technologies
+### Technologies
+
 Clientside:
 React, HTML, CSS
 
